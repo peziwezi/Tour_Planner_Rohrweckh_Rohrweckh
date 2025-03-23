@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Tour_Planner_Rohrweckh_Rohrweckh\Tour_Planner.csproj" />
+    <ProjectReference Include="..\Tour_Planner\Tour_Planner.csproj" />
   </ItemGroup>
 
   <ItemGroup>
