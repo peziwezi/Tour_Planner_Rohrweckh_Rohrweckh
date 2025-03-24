@@ -26,20 +26,20 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <views:SearchView x:Name="SearchBar" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"/>
-            <views:TourView x:Name="TourView" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6"/>
-            <views:DetailsView x:Name="DetailsView" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6"/>
-            <views:TourLogView x:Name="TourLogView" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6"/>
-            
+            <views:SearchView x:Name="SearchBar" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"/>
+            <views:TourView x:Name="TourView" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
+            <views:DetailsView x:Name="DetailsView" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="4"/>
+            <views:TourLogView x:Name="TourLogView" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="4"/>
         </Grid>
     </DockPanel>
 </Window>

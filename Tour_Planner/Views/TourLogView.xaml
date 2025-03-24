@@ -7,19 +7,18 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <DataGrid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" 
-           Margin="5" 
+        <DataGrid
            ItemsSource="{Binding Data}" 
            AutoGenerateColumns="False" 
            AlternatingRowBackground="LightGray"
            CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding DateTime}" Header="Date/Time" Width="200"/>
-                <DataGridTextColumn Binding="{Binding Comment}" Header="Comment"/>
-                <DataGridTextColumn Binding="{Binding Difficulty}" Header="Difficulty"/>
-                <DataGridTextColumn Binding="{Binding TotalDistance}" Header="Total Distance"/>
-                <DataGridTextColumn Binding="{Binding TotalTime}" Header="Total Time"/>
-                <DataGridTextColumn Binding="{Binding Rating}" Header="Rating"/>
+                <DataGridTextColumn Binding="{Binding DateTime}" Header="Date/Time" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Comment}" Header="Comment" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Difficulty}" Header="Difficulty" Width="*"/>
+                <DataGridTextColumn Binding="{Binding TotalDistance}" Header="Total Distance" Width="*"/>
+                <DataGridTextColumn Binding="{Binding TotalTime}" Header="Total Time" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Rating}" Header="Rating" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
