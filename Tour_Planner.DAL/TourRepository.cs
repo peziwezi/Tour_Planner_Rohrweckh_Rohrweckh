@@ -18,8 +18,8 @@ namespace Tour_Planner.DAL
             var foundTour = GetSingleTourById(tour.Id);
             if (foundTour != null)
             {
-                _tourList.Remove(foundTour);
-                _tourList.Add(tour);
+                int index = _tourList.IndexOf(foundTour);
+                _tourList[index] = tour;
             }
         }
 
@@ -38,7 +38,7 @@ namespace Tour_Planner.DAL
             return new List<Tour>(_tourList);
         }
 
-        public IEnumerable<Tour> GetAllToursByText(string searchPattern)
+        public IEnumerable<Tour> GetToursByName(string searchPattern)
         {
             return _tourList
                 .Where(f => f.Name.Contains(searchPattern, StringComparison.InvariantCultureIgnoreCase))

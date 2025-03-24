@@ -34,7 +34,7 @@ namespace Tour_Planner.DAL
         public IEnumerable<TourLog> GetTourLogsByTourId(int tourId)
         {
             return _tourLogList
-               .Where(j => j.TourId == tourId)
+               .Where(p =>p.TourId == tourId)
                .ToList();
         }
         public TourLog? GetSingleTourLogById(int id)

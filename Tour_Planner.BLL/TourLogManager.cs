@@ -14,7 +14,14 @@ namespace Tour_Planner.BLL
 
         public IEnumerable<TourLog> FindMatchingTour(int tourId)
         {
-            return _repository.GetTourLogsByTourId(tourId);
+            if (tourId > 0)
+            {
+                return _repository.GetTourLogsByTourId(tourId);
+            }
+            else
+            {
+                return Enumerable.Empty<TourLog>();
+            }
         }
 
         public TourLog? AddTourLog(TourLog tourLog)

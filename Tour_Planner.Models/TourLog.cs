@@ -19,7 +19,7 @@ namespace Tour_Planner.Models
 
         public TourLog(int tourId, string datetime, string comment, string difficulty, double totaldistance, double totaltime, double rating)
         {
-            Id = tourId;
+            TourId = tourId;
             DateTime = datetime;
             Comment = comment;
             Difficulty = difficulty;

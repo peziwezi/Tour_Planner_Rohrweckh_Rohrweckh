@@ -18,7 +18,7 @@ namespace Tour_Planner.BLL
             {
                 return _repository.GetAllTours();
             }
-            return _repository.GetAllToursByText(searchText);
+            return _repository.GetToursByName(searchText);
         }
 
         public Tour? AddTour(Tour tour)

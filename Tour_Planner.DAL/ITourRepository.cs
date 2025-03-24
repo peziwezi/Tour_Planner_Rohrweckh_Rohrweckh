@@ -9,7 +9,7 @@ namespace Tour_Planner.DAL
         void Remove(Tour tour);
 
         IEnumerable<Tour> GetAllTours();
-        IEnumerable<Tour> GetAllToursByText(string searchPattern);
+        IEnumerable<Tour> GetToursByName(string searchPattern);
         Tour? GetSingleTourById(int id);
     }
 }

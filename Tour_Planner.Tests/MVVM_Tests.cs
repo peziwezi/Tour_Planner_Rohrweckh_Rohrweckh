@@ -2,7 +2,7 @@ using Tour_Planner;
 
 namespace Tour_Planner.Tests
 {
-    public class MVVP_Tests
+    public class MVVM_Tests
     {
         [SetUp]
         public void Setup()
