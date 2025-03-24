@@ -86,11 +86,13 @@ namespace Tour_Planner.ViewModels
             {
                 SearchTours(searchText);
             };
-
             tourViewModel.SelectedTourChanged += (_, tour) =>
             {
-                SelectedTour = tour;
-                detailsViewModel.GetDetails(tour);
+                if (tour != null)
+                {
+                    SelectedTour = tour;
+                    detailsViewModel.GetDetails(tour);
+                }
             };
 
         }
