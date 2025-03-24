@@ -26,7 +26,7 @@ namespace Tour_Planner.Tests
             Tour testTour1 = new Tour("Wien-Baden", "Tour von Wien nach Baden", "Wien", "Baden", "Zug", 29, 24, "----");
             Tour testTour2 = _tourRepository.Add(testTour1); 
             testTour1.Id = 1;
-            Assert.AreEqual(testTour2, testTour1);
+            Assert.That(testTour2, Is.EqualTo(testTour1));
         }
         [Test]
         public void Id_Is_Set_Correctly()
@@ -36,7 +36,7 @@ namespace Tour_Planner.Tests
             _tourRepository.Add(testTour1);
             _tourRepository.Add(testTour1);
             Tour testTour2 = _tourRepository.Add(testTour1);
-            Assert.AreEqual(testTour2.Id, 4);
+            Assert.That(testTour2.Id, Is.EqualTo(4));
         }
         [Test]
         public void Tour_added_to_Repository()
@@ -46,7 +46,7 @@ namespace Tour_Planner.Tests
             testTour1.Id = 1;
             List<Tour> testList = _tourRepository.GetAllTours().ToList();
             Tour testTour2 = testList[0];
-            Assert.AreEqual(testTour2, testTour1);
+            Assert.That(testTour2, Is.EqualTo(testTour1));
         }
         [Test]
         public void Tour_searched_by_Name()
@@ -56,7 +56,7 @@ namespace Tour_Planner.Tests
             testTour1.Id = 1;
             List<Tour> testList = _tourRepository.GetToursByName("Wien-Baden").ToList();
             Tour testTour2 = testList[0];
-            Assert.AreEqual(testTour2, testTour1);
+            Assert.That(testTour2, Is.EqualTo(testTour1));
         }
         [Test]
         public void Tour_searched_by_Id()
@@ -64,8 +64,8 @@ namespace Tour_Planner.Tests
             Tour testTour1 = new Tour("Wien-Baden", "Tour von Wien nach Baden", "Wien", "Baden", "Zug", 29, 24, "----");
             _tourRepository.Add(testTour1);
             testTour1.Id = 1;
-            Tour testTour2 = _tourRepository.GetSingleTourById(1);
-            Assert.AreEqual(testTour2, testTour1);
+            Tour? testTour2 = _tourRepository.GetSingleTourById(1);
+            Assert.That(testTour2, Is.EqualTo(testTour1));
         }
         [Test]
         public void Tour_deleted_from_Repository()
@@ -74,7 +74,7 @@ namespace Tour_Planner.Tests
             _tourRepository.Add(testTour1);
             _tourRepository.Remove(testTour1);
             List<Tour> testList = _tourRepository.GetAllTours().ToList();
-            Assert.AreEqual(testList.Count, 0);
+            Assert.That(testList.Count, Is.EqualTo(0));
         }
         [Test]
         public void Tour_updated()
@@ -85,7 +85,7 @@ namespace Tour_Planner.Tests
             _tourRepository.Add(testTour1);
             _tourRepository.Update(testTour2);
             List<Tour> testList = _tourRepository.GetToursByName("Wien-Baden").ToList();
-            Assert.AreEqual(testList[0], testTour2);
+            Assert.That(testList[0], Is.EqualTo(testTour2));
         }
         [Test]
         public void AddedTourLog_IsEqual_to_GivenTourLog()
@@ -93,7 +93,7 @@ namespace Tour_Planner.Tests
             TourLog testLog1 = new TourLog(1, "24-03-2025-1610", "langweilig", "leicht", 29, 24, 2);
             TourLog testLog2 = _tourLogRepository.Add(testLog1);
             testLog1.Id = 1;
-            Assert.AreEqual(testLog2, testLog1);
+            Assert.That(testLog2, Is.EqualTo(testLog1));
         }
         [Test]
         public void LogId_Is_Set_Correctly()
@@ -104,7 +104,7 @@ namespace Tour_Planner.Tests
             _tourLogRepository.Add(testLog1);
             _tourLogRepository.Add(testLog1);
             TourLog testLog2 = _tourLogRepository.Add(testLog1);
-            Assert.AreEqual(testLog2.Id, 4);
+            Assert.That(testLog2.Id, Is.EqualTo(4));
         }
         [Test]
         public void TourLog_added_to_Repository()
@@ -112,8 +112,8 @@ namespace Tour_Planner.Tests
             TourLog testLog1 = new TourLog(1, "24-03-2025-1610", "langweilig", "leicht", 29, 24, 2);
             _tourLogRepository.Add(testLog1);
             testLog1.Id = 1;
-            TourLog testLog2 = _tourLogRepository.GetSingleTourLogById(1);
-            Assert.AreEqual(testLog2, testLog1);
+            TourLog? testLog2 = _tourLogRepository.GetSingleTourLogById(1);
+            Assert.That(testLog2, Is.EqualTo(testLog1));
         }
         [Test]
         public void TourLog_deleted_from_Repository()
@@ -122,7 +122,7 @@ namespace Tour_Planner.Tests
             _tourLogRepository.Add(testLog1);
             _tourLogRepository.Remove(testLog1);
             List<TourLog> testList = _tourLogRepository.GetTourLogsByTourId(1).ToList();
-            Assert.AreEqual(testList.Count, 0);
+            Assert.That(testList.Count, Is.EqualTo(0));
         }
         [Test]
         public void TourLog_updated()
@@ -133,7 +133,7 @@ namespace Tour_Planner.Tests
             _tourLogRepository.Add(testLog1);
             _tourLogRepository.Update(testLog2);
             List<TourLog> testList = _tourLogRepository.GetTourLogsByTourId(1).ToList();
-            Assert.AreEqual(testList[0], testLog2);
+            Assert.That(testList[0], Is.EqualTo(testLog2));
         }
         [Test]
         public void TourLog_set_to_correct_tour()
@@ -146,7 +146,7 @@ namespace Tour_Planner.Tests
             _tourLogRepository.Add(testLog2);
             _tourLogRepository.Add(testLog3);
             List<TourLog> testList = _tourLogRepository.GetTourLogsByTourId(2).ToList();
-            Assert.AreEqual(testList[0], testLog3);
+            Assert.That(testList[0], Is.EqualTo(testLog3));
         }
     }
 }

@@ -33,8 +33,11 @@ namespace Tour_Planner.ViewModels
         
         public void AddTourLog(TourLog tourLog)
         {
-            TourLog savedTour = tourLogManager.AddTourLog(tourLog);
-            Data.Add(tourLog);
+            TourLog? savedTourLog = tourLogManager.AddTourLog(tourLog);
+            if (savedTourLog != null)
+            {
+                Data.Add(savedTourLog);
+            }
         }
 
         public void ModifyTourLog(TourLog tourLog)

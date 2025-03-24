@@ -39,9 +39,11 @@ namespace Tour_Planner.ViewModels
 
         public void AddTour(Tour tour)
         {
-            Tour savedTour = tourManager.AddTour(tour);
-            Data.Add(savedTour);
-
+            Tour? savedTour = tourManager.AddTour(tour);
+            if(savedTour != null)
+            {
+                Data.Add(savedTour);
+            }
         }
 
         public void ModifyTour(Tour tour)
