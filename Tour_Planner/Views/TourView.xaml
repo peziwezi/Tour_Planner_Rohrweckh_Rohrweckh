@@ -36,12 +36,11 @@
         <Button Grid.Row="0" Grid.Column="3" MinWidth="50" Padding="5" Margin="0,5" Command="{Binding AddTourCommand}">Add</Button>
         <Button Grid.Row="0" Grid.Column="4" MinWidth="50" Padding="5" Margin="5,5" Command="{Binding ModifyTourCommand}">Modify</Button>
         <Button Grid.Row="0" Grid.Column="5" MinWidth="50" Padding="5" Margin="0,5,5,5" Command="{Binding DeleteTourCommand}">Delete</Button>
-        <ListView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" ItemsSource="{Binding Items}" SelectedValue="{Binding SelectedItem}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" ItemsSource="{Binding Data}" SelectedValue="{Binding SelectedItem}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
-                        <TextBlock Text="{Binding Text}" TextWrapping="WrapWithOverflow" FontSize="14"/>
-                        <TextBlock Text="{Binding Source, StringFormat=Source: {0}}" FontSize="10" FontWeight="Light" Margin="0,5,0,0"/>
+                        <TextBlock Text="{Binding Name}" TextWrapping="WrapWithOverflow" FontSize="14"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

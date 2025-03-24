@@ -4,7 +4,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Tour_Planner.Commands;
 using Tour_Planner.Models;
+using Tour_Planner.Views;
 
 namespace Tour_Planner.ViewModels
 {
@@ -13,6 +16,7 @@ namespace Tour_Planner.ViewModels
         public event EventHandler<Tour?>? SelectedItemChanged;
         public ObservableCollection<Tour> Data { get; } = [];
 
+        public ICommand AddTourCommand { get; }
         private Tour? selectedItem;
         public Tour? SelectedItem
         {
@@ -25,7 +29,7 @@ namespace Tour_Planner.ViewModels
             }
         }
 
-        public void AddTourLog(Tour tour)
+        public void AddTour(Tour tour)
         {
             Data.Add(tour);
         }
@@ -48,6 +52,15 @@ namespace Tour_Planner.ViewModels
         private void OnSelectedItemChanged()
         {
             SelectedItemChanged?.Invoke(this, SelectedItem);
+        }
+        public TourViewModel()
+        {
+            AddTourCommand = new RelayCommand((_) =>
+            {
+                var dlg = new AddTourDialog();
+                dlg.DataContext = new AddTourViewModel(this);
+                dlg.ShowDialog();
+            });
         }
     }
 }
