@@ -5,8 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tour_Planner.Views"
         mc:Ignorable="d"
-        Title="AddTourLogDialog" Height="450" Width="800">
+            Title="Add TourLog" Height="360" Width="400" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <GroupBox Margin="10" 
+      Header="Tour">
+                <StackPanel>
+                    <Label>Date/Time</Label>
+                    <TextBox Text="{Binding DateTime}" />
+                    <Label>Comment</Label>
+                    <TextBox Text="{Binding Comment}" />
+                    <Label>Difficulty</Label>
+                    <TextBox Text="{Binding Difficulty}" />
+                    <Label>Total Distance</Label>
+                    <TextBox Text="{Binding TotalDistance}" />
+                    <Label>Total Time</Label>
+                    <TextBox Text="{Binding TotalTime}" />
+                    <Label>Rating</Label>
+                    <TextBox Text="{Binding Rating}" />
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+        <Button Grid.Row="1" Grid.Column="0" Margin="5,5,5,5" Command="{Binding SaveCommand}">Save</Button>
+        <Button Grid.Row="1" Grid.Column="1" Margin="5,5,5,5" Command="{Binding CloseCommand}">Cancel</Button>
     </Grid>
 </Window>

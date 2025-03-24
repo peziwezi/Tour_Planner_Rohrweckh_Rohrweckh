@@ -16,6 +16,8 @@ namespace Tour_Planner.ViewModels
         public ICommand ExitCommand { get; }
         public ICommand AboutCommand { get; }
         public ICommand AddTourCommand { get; }
+        public ICommand AddTourLogCommand { get; }
+
         public Action? Close { get; set; }
         public MainViewModel(SearchViewModel searchViewModel, TourViewModel tourViewModel, DetailsViewModel detailsViewModel, TourLogViewModel tourLogViewModel)
         {
@@ -34,6 +36,12 @@ namespace Tour_Planner.ViewModels
             {
                 var dlg = new AddTourDialog();
                 dlg.DataContext = new AddTourViewModel(tourViewModel);
+                dlg.ShowDialog();
+            });
+            AddTourLogCommand = new RelayCommand((_) =>
+            {
+                var dlg = new AddTourLogDialog();
+                dlg.DataContext = new AddTourLogViewModel(tourLogViewModel);
                 dlg.ShowDialog();
             });
 

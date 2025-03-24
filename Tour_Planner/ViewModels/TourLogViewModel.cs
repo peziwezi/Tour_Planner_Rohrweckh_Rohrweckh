@@ -8,6 +8,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using Tour_Planner.Commands;
 using Tour_Planner.Models;
+using Tour_Planner.Views;
 
 namespace Tour_Planner.ViewModels
 {
@@ -15,7 +16,7 @@ namespace Tour_Planner.ViewModels
     {
         public event EventHandler<TourLog?>? SelectedItemChanged;
         public ObservableCollection<TourLog> Data { get; } = [];
-
+        public ICommand AddTourLogCommand { get; }
         private TourLog? selectedItem;
         public TourLog? SelectedItem
         {
@@ -51,6 +52,15 @@ namespace Tour_Planner.ViewModels
         private void OnSelectedItemChanged()
         {
             SelectedItemChanged?.Invoke(this, SelectedItem);
+        }
+        public TourLogViewModel()
+        {
+            AddTourLogCommand = new RelayCommand((_) =>
+            {
+                var dlg = new AddTourLogDialog();
+                dlg.DataContext = new AddTourLogViewModel(this);
+                dlg.ShowDialog();
+            });
         }
     }
 }
