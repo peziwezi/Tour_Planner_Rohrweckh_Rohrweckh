@@ -23,6 +23,8 @@ namespace Tour_Planner.ViewModels
         public ICommand AboutCommand { get; }
         public ICommand AddTourCommand { get; }
         public ICommand AddTourLogCommand { get; }
+        public ICommand DeleteTourCommand { get; }
+        public ICommand DeleteTourLogCommand { get; }
 
         public Action? Close { get; set; }
 
@@ -67,6 +69,18 @@ namespace Tour_Planner.ViewModels
                 var dlg = new AddTourLogDialog();
                 dlg.DataContext = new AddTourLogViewModel(tourLogViewModel);
                 dlg.ShowDialog();
+            });
+            DeleteTourCommand = new RelayCommand((_) =>
+            {
+                if (SelectedTour == null)
+                {
+                    return;
+                }
+                tourViewModel.RemoveTour(SelectedTour);
+            }, (_) => SelectedTour != null);
+            DeleteTourLogCommand = new RelayCommand((_) =>
+            {
+                
             });
             searchViewModel.SearchTextChanged += (_, searchText) =>
             {
