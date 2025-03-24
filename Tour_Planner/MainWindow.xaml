@@ -13,8 +13,16 @@
                 <MenuItem Header="_Exit" Command="{Binding ExitCommand}"/>
             </MenuItem>
             <MenuItem Header="_Edit">
-                <MenuItem Header="_Add" Command="{Binding AddItemCommand}"/>
-                <MenuItem Header="_Delete" Command="{Binding DeleteItemCommand}"/>
+                <MenuItem Header="_Edit Tour">
+                    <MenuItem Header="_Add Tour" Command="{Binding AddTourCommand}"/>
+                    <MenuItem Header="_Modify Tour" Command="{Binding ModifyTourCommand}"/>
+                    <MenuItem Header="_Delete Tour" Command="{Binding DeleteTourCommand}"/>
+                </MenuItem>
+                <MenuItem Header="_Edit Tourlog">
+                    <MenuItem Header="_Add Tourlog" Command="{Binding AddTourLogCommand}"/>
+                    <MenuItem Header="_Modify Tourlog" Command="{Binding ModifyTourLogCommand}"/>
+                    <MenuItem Header="_Delete Tourlog" Command="{Binding DeleteTourLogCommand}"/>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="_Options">
             </MenuItem>

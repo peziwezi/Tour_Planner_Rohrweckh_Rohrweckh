@@ -6,8 +6,37 @@
              xmlns:local="clr-namespace:Tour_Planner.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="Border">
+            <Setter Property="Background" Value="LightGray" />
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="BorderThickness" Value="0.5" />
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </UserControl.Resources>
     <Grid>
-        <ListView Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Items}" SelectedValue="{Binding SelectedItem}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Row="0" Grid.Column="0" Margin="5,5,5,5" MinWidth="50" Padding="5">
+            <TextBlock Text="Tours"/>
+        </Border>
+        <Button Grid.Row="0" Grid.Column="3" MinWidth="50" Padding="5" Margin="0,5" Command="{Binding AddTourCommand}">Add</Button>
+        <Button Grid.Row="0" Grid.Column="4" MinWidth="50" Padding="5" Margin="5,5" Command="{Binding ModifyTourCommand}">Modify</Button>
+        <Button Grid.Row="0" Grid.Column="5" MinWidth="50" Padding="5" Margin="0,5,5,5" Command="{Binding DeleteTourCommand}">Delete</Button>
+        <ListView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" ItemsSource="{Binding Items}" SelectedValue="{Binding SelectedItem}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
