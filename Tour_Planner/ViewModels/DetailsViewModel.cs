@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tour_Planner.BLL;
 using Tour_Planner.Models;
 
 namespace Tour_Planner.ViewModels
@@ -11,5 +12,8 @@ namespace Tour_Planner.ViewModels
     class DetailsViewModel : BaseViewModel
     {
         public ObservableCollection<Tour> Data { get; } = [];
+        public DetailsViewModel(ITourManager tourManager) 
+        { 
+        }
     }
 }

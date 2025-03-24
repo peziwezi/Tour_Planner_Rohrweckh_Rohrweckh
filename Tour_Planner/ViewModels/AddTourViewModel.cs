@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Tour_Planner.BLL;
 using Tour_Planner.Commands;
 using Tour_Planner.Interfaces;
 using Tour_Planner.Models;
@@ -66,7 +67,7 @@ namespace Tour_Planner.ViewModels
         }
         public Action? Close { get; set; }
 
-        public AddTourViewModel(TourViewModel tourViewModel)
+        public AddTourViewModel(TourViewModel tourViewModel, ITourManager tourManager)
         {
             CloseCommand = new RelayCommand((_) =>
             {
@@ -78,6 +79,7 @@ namespace Tour_Planner.ViewModels
                 {
                     Tour tour = new Tour(name, tourdescription, origin, destination, transporttype, 10, 10, "Image.png");
                     tourViewModel.AddTour(tour);
+                    tourManager.AddTour(tour);
                     Close?.Invoke();
                 }
             });

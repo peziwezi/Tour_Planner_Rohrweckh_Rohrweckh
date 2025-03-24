@@ -36,7 +36,7 @@
         <Button Grid.Row="0" Grid.Column="3" MinWidth="50" Padding="5" Margin="0,5" Command="{Binding AddTourCommand}">Add</Button>
         <Button Grid.Row="0" Grid.Column="4" MinWidth="50" Padding="5" Margin="5,5" Command="{Binding ModifyTourCommand}">Modify</Button>
         <Button Grid.Row="0" Grid.Column="5" MinWidth="50" Padding="5" Margin="0,5,5,5" Command="{Binding DeleteTourCommand}">Delete</Button>
-        <ListView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" ItemsSource="{Binding Data}" SelectedValue="{Binding SelectedItem}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" ItemsSource="{Binding Data}" SelectedValue="{Binding SelectedTour}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">

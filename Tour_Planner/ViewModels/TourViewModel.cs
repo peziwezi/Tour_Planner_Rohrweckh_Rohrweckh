@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Tour_Planner.BLL;
 using Tour_Planner.Commands;
 using Tour_Planner.Models;
 using Tour_Planner.Views;
@@ -13,20 +14,25 @@ namespace Tour_Planner.ViewModels
 {
     class TourViewModel : BaseViewModel
     {
-        public event EventHandler<Tour?>? SelectedItemChanged;
+        public event EventHandler<Tour?>? SelectedTourChanged;
         public ObservableCollection<Tour> Data { get; } = [];
 
         public ICommand AddTourCommand { get; }
-        private Tour? selectedItem;
-        public Tour? SelectedItem
+        private Tour? selectedTour;
+        public Tour? SelectedTour
         {
-            get => selectedItem;
+            get => selectedTour;
             set
             {
-                selectedItem = value;
+                selectedTour = value;
                 OnPropertyChanged();
                 OnSelectedItemChanged();
             }
+        }
+        public void SetTours(IEnumerable<Tour> tours)
+        {
+            Data.Clear();
+            tours.ToList().ForEach(j => Data.Add(j));
         }
 
         public void AddTour(Tour tour)
@@ -51,14 +57,14 @@ namespace Tour_Planner.ViewModels
 
         private void OnSelectedItemChanged()
         {
-            SelectedItemChanged?.Invoke(this, SelectedItem);
+            SelectedTourChanged?.Invoke(this, SelectedTour);
         }
-        public TourViewModel()
+        public TourViewModel(ITourManager tourManager)
         {
             AddTourCommand = new RelayCommand((_) =>
             {
                 var dlg = new AddTourDialog();
-                dlg.DataContext = new AddTourViewModel(this);
+                dlg.DataContext = new AddTourViewModel(this, tourManager);
                 dlg.ShowDialog();
             });
         }

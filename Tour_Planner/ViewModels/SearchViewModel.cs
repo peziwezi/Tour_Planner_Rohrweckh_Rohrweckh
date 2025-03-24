@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Tour_Planner.BLL;
 using Tour_Planner.Commands;
 
 namespace Tour_Planner.ViewModels
@@ -27,7 +28,7 @@ namespace Tour_Planner.ViewModels
             }
         }
 
-        public SearchViewModel()
+        public SearchViewModel(ITourManager tourManager)
         {
             SearchCommand = new RelayCommand((_) =>
             {

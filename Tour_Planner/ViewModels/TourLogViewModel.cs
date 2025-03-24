@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Documents;
 using System.Windows.Input;
+using Tour_Planner.BLL;
 using Tour_Planner.Commands;
 using Tour_Planner.Models;
 using Tour_Planner.Views;
@@ -53,7 +54,7 @@ namespace Tour_Planner.ViewModels
         {
             SelectedItemChanged?.Invoke(this, SelectedItem);
         }
-        public TourLogViewModel()
+        public TourLogViewModel(ITourLogManager tourLogManager)
         {
             AddTourLogCommand = new RelayCommand((_) =>
             {
