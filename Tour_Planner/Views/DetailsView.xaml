@@ -6,7 +6,37 @@
              xmlns:local="clr-namespace:Tour_Planner.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <TabControl>
+        <TabItem Header="General">
+            <DataGrid
+                ItemsSource="{Binding Data}" 
+                AutoGenerateColumns="False" 
+                AlternatingRowBackground="LightGray"
+                CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">  
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding TourDescription}" Header="Tour Description" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding TourDistance}" Header="Tour Distance" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding EstimatedTime}" Header="Estimated Time" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </TabItem>
+        <TabItem Header="Route">
             
-    </Grid>
+
+        </TabItem>
+        <TabItem Header="Misc">
+            <DataGrid
+               ItemsSource="{Binding Data}" 
+               AutoGenerateColumns="False" 
+               AlternatingRowBackground="LightGray"
+               CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Origin}" Header="Origin" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Destination}" Header="Destination" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding TransportType}" Header="Transport Type" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </TabItem>
+    </TabControl>
 </UserControl>
