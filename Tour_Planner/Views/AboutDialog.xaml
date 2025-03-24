@@ -6,7 +6,12 @@
         xmlns:local="clr-namespace:Tour_Planner.ViewModels"
         mc:Ignorable="d"
         Title="About" Height="300" Width="400" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" ResizeMode="NoResize" Loaded="Window_Loaded">
-    <StackPanel Margin="5">
-        <Button Command="{Binding CloseCommand}">Close</Button>
-    </StackPanel>
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="{Binding AboutText}"  Grid.Row="0" TextWrapping="WrapWithOverflow"/>
+        <Button Command="{Binding CloseCommand}"  Grid.Row="1">Close</Button>
+    </Grid>
 </Window>

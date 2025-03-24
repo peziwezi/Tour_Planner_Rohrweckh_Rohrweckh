@@ -14,12 +14,18 @@ namespace Tour_Planner.ViewModels
         public ICommand CloseCommand { get; }
         public Action? Close { get; set; }
 
+        private string? aboutText = "This is a Tour Planner Programm by Daniel and Patrick Rohrweckh";
+        public string? AboutText
+        {
+            get => aboutText;
+        }
         public AboutViewModel()
         {
             CloseCommand = new RelayCommand((_) =>
             {
                 Close?.Invoke();
             });
+            
         }
     }
 }
