@@ -4,9 +4,42 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tour_Planner"
+        xmlns:views="clr-namespace:Tour_Planner.Views" 
         mc:Ignorable="d"
         Title="TourPlanner" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Padding="5">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Exit" Command="{Binding ExitCommand}"/>
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="_Add" Command="{Binding AddItemCommand}"/>
+                <MenuItem Header="_Delete" Command="{Binding DeleteItemCommand}"/>
+            </MenuItem>
+            <MenuItem Header="_Options">
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="_About" Command="{Binding AboutCommand}"/>
+            </MenuItem>
+        </Menu>
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <views:SearchView x:Name="SearchBar" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"/>
+            <views:TourView x:Name="TourView" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6"/>
+            <views:DetailsView x:Name="DetailsView" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6"/>
+            <views:TourLogView x:Name="TourLogView" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6"/>
+            
+        </Grid>
+    </DockPanel>
 </Window>
