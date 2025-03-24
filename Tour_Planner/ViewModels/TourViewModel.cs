@@ -14,6 +14,7 @@ namespace Tour_Planner.ViewModels
 {
     class TourViewModel : BaseViewModel
     {
+        private readonly ITourManager tourManager;
         public event EventHandler<Tour?>? SelectedTourChanged;
         public ObservableCollection<Tour> Data { get; } = [];
 
@@ -37,7 +38,9 @@ namespace Tour_Planner.ViewModels
 
         public void AddTour(Tour tour)
         {
-            Data.Add(tour);
+            Tour savedTour = tourManager.AddTour(tour);
+            Data.Add(savedTour);
+
         }
 
         public void ModifyTour(Tour tour)
@@ -61,10 +64,11 @@ namespace Tour_Planner.ViewModels
         }
         public TourViewModel(ITourManager tourManager)
         {
+            this.tourManager = tourManager;
             AddTourCommand = new RelayCommand((_) =>
             {
                 var dlg = new AddTourDialog();
-                dlg.DataContext = new AddTourViewModel(this, tourManager);
+                dlg.DataContext = new AddTourViewModel(this);
                 dlg.ShowDialog();
             });
         }

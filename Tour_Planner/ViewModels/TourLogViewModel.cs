@@ -17,21 +17,23 @@ namespace Tour_Planner.ViewModels
     {
         public event EventHandler<TourLog?>? SelectedItemChanged;
         public ObservableCollection<TourLog> Data { get; } = [];
+        private readonly ITourLogManager tourLogManager;
         public ICommand AddTourLogCommand { get; }
-        private TourLog? selectedItem;
-        public TourLog? SelectedItem
+        private TourLog? selectedTourlog;
+        public TourLog? SelectedTourlog
         {
-            get => selectedItem;
+            get => selectedTourlog;
             set
             {
-                selectedItem = value;
+                selectedTourlog = value;
                 OnPropertyChanged();
-                OnSelectedItemChanged();
+                OnSelectedTourlogChanged();
             }
         }
         
         public void AddTourLog(TourLog tourLog)
         {
+            TourLog savedTour = tourLogManager.AddTourLog(tourLog);
             Data.Add(tourLog);
         }
 
@@ -50,12 +52,13 @@ namespace Tour_Planner.ViewModels
             Data.Remove(tourLog);
         }
 
-        private void OnSelectedItemChanged()
+        private void OnSelectedTourlogChanged()
         {
-            SelectedItemChanged?.Invoke(this, SelectedItem);
+            SelectedItemChanged?.Invoke(this, selectedTourlog);
         }
         public TourLogViewModel(ITourLogManager tourLogManager)
         {
+            this.tourLogManager = tourLogManager;
             AddTourLogCommand = new RelayCommand((_) =>
             {
                 var dlg = new AddTourLogDialog();

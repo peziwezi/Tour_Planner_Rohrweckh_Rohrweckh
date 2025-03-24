@@ -21,4 +21,11 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
+    private void Window_Loaded(object sender, RoutedEventArgs e)
+    {
+        if (DataContext is ICloseWindow cw)
+        {
+            cw.Close += () => Close();
+        }
+    }
 }

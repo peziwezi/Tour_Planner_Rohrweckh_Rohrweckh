@@ -21,11 +21,6 @@ namespace Tour_Planner.BLL
             return _repository.GetToursByName(searchText);
         }
 
-        public IEnumerable<Tour> GetAllTours()
-        {
-            return _repository.GetAllTours();
-        }
-
         public Tour? AddTour(Tour tour)
         {
             if (tour != null)

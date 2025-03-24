@@ -9,10 +9,11 @@ using Tour_Planner.Commands;
 using Tour_Planner.BLL;
 using Tour_Planner.Views;
 using Tour_Planner.Models;
+using Tour_Planner.Interfaces;
 
 namespace Tour_Planner.ViewModels
 {
-    class MainViewModel : BaseViewModel
+    class MainViewModel : BaseViewModel, ICloseWindow
     {
         private readonly ITourManager tourManager;
         private readonly ITourLogManager tourLogManager;
@@ -46,6 +47,7 @@ namespace Tour_Planner.ViewModels
             ExitCommand = new RelayCommand((_) =>
             {
                 //?
+                Close?.Invoke();
             });
 
             AboutCommand = new RelayCommand((_) =>
@@ -57,10 +59,9 @@ namespace Tour_Planner.ViewModels
             AddTourCommand = new RelayCommand((_) =>
             {
                 var dlg = new AddTourDialog();
-                dlg.DataContext = new AddTourViewModel(tourViewModel, tourManager);
+                dlg.DataContext = new AddTourViewModel(tourViewModel);
                 dlg.ShowDialog();
             });
-
             AddTourLogCommand = new RelayCommand((_) =>
             {
                 var dlg = new AddTourLogDialog();
@@ -75,6 +76,7 @@ namespace Tour_Planner.ViewModels
             tourViewModel.SelectedTourChanged += (_, tour) =>
             {
                 SelectedTour = tour;
+                detailsViewModel.GetDetails(tour);
             };
 
         }

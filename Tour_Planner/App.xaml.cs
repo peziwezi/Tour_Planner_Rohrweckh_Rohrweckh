@@ -21,7 +21,7 @@ public partial class App : Application
         var tourLogManager = new TourLogManager(tourLogRepository);
         var searchViewModel = new SearchViewModel(tourManager);
         var tourViewModel = new TourViewModel(tourManager);
-        var detailsViewModel = new DetailsViewModel(tourManager);
+        var detailsViewModel = new DetailsViewModel();
         var tourLogViewModel = new TourLogViewModel(tourLogManager);
         var wnd = new MainWindow
         {

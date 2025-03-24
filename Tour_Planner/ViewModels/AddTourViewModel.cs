@@ -67,7 +67,7 @@ namespace Tour_Planner.ViewModels
         }
         public Action? Close { get; set; }
 
-        public AddTourViewModel(TourViewModel tourViewModel, ITourManager tourManager)
+        public AddTourViewModel(TourViewModel tourViewModel)
         {
             CloseCommand = new RelayCommand((_) =>
             {
@@ -79,7 +79,6 @@ namespace Tour_Planner.ViewModels
                 {
                     Tour tour = new Tour(name, tourdescription, origin, destination, transporttype, 10, 10, "Image.png");
                     tourViewModel.AddTour(tour);
-                    tourManager.AddTour(tour);
                     Close?.Invoke();
                 }
             });

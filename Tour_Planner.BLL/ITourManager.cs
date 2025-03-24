@@ -8,7 +8,6 @@ namespace Tour_Planner.BLL
         void UpdateTour(Tour tour);
         void DeleteTour(Tour tour);
 
-        IEnumerable<Tour> GetAllTours();
         IEnumerable<Tour> FindMatchingTours(string? searchText = null);
     }
 }

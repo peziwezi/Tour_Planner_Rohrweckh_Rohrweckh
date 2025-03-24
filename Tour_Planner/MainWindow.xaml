@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Tour_Planner"
         xmlns:views="clr-namespace:Tour_Planner.Views" 
         mc:Ignorable="d"
-        Title="TourPlanner" Height="450" Width="800">
+        Title="TourPlanner" Height="450" Width="800" Loaded="Window_Loaded">
     <DockPanel>
         <Menu DockPanel.Dock="Top" Padding="5">
             <MenuItem Header="_File">

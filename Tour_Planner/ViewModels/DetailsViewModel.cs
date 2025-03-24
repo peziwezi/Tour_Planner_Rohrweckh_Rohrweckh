@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using Tour_Planner.BLL;
 using Tour_Planner.Models;
 
@@ -11,9 +6,14 @@ namespace Tour_Planner.ViewModels
 {
     class DetailsViewModel : BaseViewModel
     {
-        public ObservableCollection<Tour> Data { get; } = [];
-        public DetailsViewModel(ITourManager tourManager) 
-        { 
+        public ObservableCollection<Tour> Data { get; set; } = [];
+        public DetailsViewModel()
+        {
+        }
+        public void GetDetails(Tour tour)
+        {
+            Data.Clear();
+            Data.Add(tour);
         }
     }
 }
