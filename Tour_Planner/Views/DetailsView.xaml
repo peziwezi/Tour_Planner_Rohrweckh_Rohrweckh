@@ -22,8 +22,7 @@
             </DataGrid>
         </TabItem>
         <TabItem Header="Route">
-            
-
+            <Image Source="{Binding ImageSource}"  Stretch="Fill"></Image>
         </TabItem>
         <TabItem Header="Misc">
             <DataGrid

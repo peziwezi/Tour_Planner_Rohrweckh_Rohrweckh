@@ -9,6 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\Image.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\Image.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Tour_Planner.BLL\Tour_Planner.BLL.csproj" />
     <ProjectReference Include="..\Tour_Planner.Models\Tour_Planner.Models.csproj" />
   </ItemGroup>
