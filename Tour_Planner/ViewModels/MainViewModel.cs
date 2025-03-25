@@ -13,7 +13,7 @@ using Tour_Planner.Interfaces;
 
 namespace Tour_Planner.ViewModels
 {
-    class MainViewModel : BaseViewModel, ICloseWindow
+    public class MainViewModel : BaseViewModel, ICloseWindow
     {
         private readonly ITourManager tourManager;
         private readonly TourViewModel tourViewModel;

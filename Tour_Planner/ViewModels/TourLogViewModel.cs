@@ -13,7 +13,7 @@ using Tour_Planner.Views;
 
 namespace Tour_Planner.ViewModels
 {
-    class TourLogViewModel : BaseViewModel
+    public class TourLogViewModel : BaseViewModel
     {
         public event EventHandler<TourLog?>? SelectedTourLogChanged;
         public ObservableCollection<TourLog> Data { get; } = [];
@@ -50,6 +50,7 @@ namespace Tour_Planner.ViewModels
                 TourLog oldTourLog = Data.Single(x => x.Id == tourLog.Id);
                 int index = Data.IndexOf(oldTourLog);
                 Data[index] = tourLog;
+                tourLogManager.UpdateTourLog(tourLog);
             }
         }
 

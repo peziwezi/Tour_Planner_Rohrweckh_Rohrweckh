@@ -11,7 +11,7 @@ using Tour_Planner.Models;
 
 namespace Tour_Planner.ViewModels
 {
-    class ModifyTourLogViewModel : BaseViewModel, ICloseWindow
+    public class ModifyTourLogViewModel : BaseViewModel, ICloseWindow
     {
         public ICommand CloseCommand { get; }
         public ICommand SaveCommand { get; }

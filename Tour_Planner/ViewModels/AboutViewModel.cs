@@ -9,7 +9,7 @@ using Tour_Planner.Interfaces;
 
 namespace Tour_Planner.ViewModels
 {
-    class AboutViewModel : BaseViewModel, ICloseWindow
+    public class AboutViewModel : BaseViewModel, ICloseWindow
     {
         public ICommand CloseCommand { get; }
         public Action? Close { get; set; }

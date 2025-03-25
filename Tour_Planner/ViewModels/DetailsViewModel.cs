@@ -4,7 +4,7 @@ using Tour_Planner.Models;
 
 namespace Tour_Planner.ViewModels
 {
-    class DetailsViewModel : BaseViewModel
+    public class DetailsViewModel : BaseViewModel
     {
         public ObservableCollection<Tour> Data { get; set; } = [];
         public string DisplayedImagePath

@@ -12,7 +12,7 @@ using Tour_Planner.Views;
 
 namespace Tour_Planner.ViewModels
 {
-    class TourViewModel : BaseViewModel
+    public class TourViewModel : BaseViewModel
     {
         private readonly ITourManager tourManager;
         private readonly ITourLogManager tourLogManager;
@@ -55,6 +55,7 @@ namespace Tour_Planner.ViewModels
                 Tour oldTour = Data.Single(x => x.Id == tour.Id);
                 int index = Data.IndexOf(oldTour);
                 Data[index] = tour;
+                tourManager.UpdateTour(tour);
             }
         }
 

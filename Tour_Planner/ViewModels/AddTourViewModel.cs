@@ -13,7 +13,7 @@ using Tour_Planner.Models;
 
 namespace Tour_Planner.ViewModels
 {
-    class AddTourViewModel : BaseViewModel, ICloseWindow
+    public class AddTourViewModel : BaseViewModel, ICloseWindow
     {
         public ICommand CloseCommand { get; }
         public ICommand SaveCommand { get; }

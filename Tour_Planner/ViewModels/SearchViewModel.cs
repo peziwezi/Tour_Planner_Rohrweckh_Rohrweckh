@@ -9,7 +9,7 @@ using Tour_Planner.Commands;
 
 namespace Tour_Planner.ViewModels
 {
-    internal class SearchViewModel : BaseViewModel
+    public class SearchViewModel : BaseViewModel
     {
         public event EventHandler<string?>? SearchTextChanged;
 
