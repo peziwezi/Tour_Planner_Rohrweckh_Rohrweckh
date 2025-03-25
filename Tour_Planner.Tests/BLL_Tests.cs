@@ -85,7 +85,7 @@ namespace Tour_Planner.Tests
         [Test]
         public void AddedTourLog_IsEqual_to_GivenTourLog()
         {
-            TourLog testLog1 = new TourLog(1,"24-03-2025-1610", "langweilig", "leicht", 29, 24, 2);
+            TourLog testLog1 = new TourLog(1,"24-03-2025-1610", "langweilig", 2, 29, 24, 2);
             TourLog? testLog2 = tourLogManager.AddTourLog(testLog1);
             testLog1.Id = 1;
             Assert.That(testLog2, Is.EqualTo(testLog1));
@@ -94,7 +94,7 @@ namespace Tour_Planner.Tests
         public void LogId_Is_Set_Correctly()
         {
 
-            TourLog testLog1 = new TourLog(1, "24-03-2025-1610", "langweilig", "leicht", 29, 24, 2);
+            TourLog testLog1 = new TourLog(1, "24-03-2025-1610", "langweilig", 2, 29, 24, 2);
             tourLogManager.AddTourLog(testLog1);
             tourLogManager.AddTourLog(testLog1);
             tourLogManager.AddTourLog(testLog1);
@@ -113,7 +113,7 @@ namespace Tour_Planner.Tests
         [Test]
         public void TourLog_added_to_Repository()
         {
-            TourLog testLog1 = new TourLog(1, "24-03-2025-1610", "langweilig", "leicht", 29, 24, 2);
+            TourLog testLog1 = new TourLog(1, "24-03-2025-1610", "langweilig", 2, 29, 24, 2);
             tourLogManager.AddTourLog(testLog1);
             testLog1.Id = 1;
             List<TourLog> testList = tourLogManager.FindMatchingTour(1).ToList();
@@ -123,7 +123,7 @@ namespace Tour_Planner.Tests
         [Test]
         public void TourLog_deleted_from_Repository()
         {
-            TourLog testLog1 = new TourLog(1, "24-03-2025-1610", "langweilig", "leicht", 29, 24, 2);
+            TourLog testLog1 = new TourLog(1, "24-03-2025-1610", "langweilig", 2, 29, 24, 2);
             tourLogManager.AddTourLog(testLog1);
             tourLogManager.DeleteTourLog(testLog1);
             List<TourLog> testList = tourLogManager.FindMatchingTour(1).ToList();
@@ -132,8 +132,8 @@ namespace Tour_Planner.Tests
         [Test]
         public void TourLog_updated()
         {
-            TourLog testLog1 = new TourLog(1, "24-03-2025-1610", "langweilig", "leicht", 29, 24, 2);
-            TourLog testLog2 = new TourLog(1, "24-03-2025-1610", "langweilig", "leicht", 29, 29, 2);
+            TourLog testLog1 = new TourLog(1, "24-03-2025-1610", "langweilig", 2, 29, 24, 2);
+            TourLog testLog2 = new TourLog(1, "24-03-2025-1610", "langweilig", 2, 29, 29, 2);
             testLog2.Id = 1;
             tourLogManager.AddTourLog(testLog1);
             tourLogManager.UpdateTourLog(testLog2);
@@ -143,9 +143,9 @@ namespace Tour_Planner.Tests
         [Test]
         public void TourLog_set_to_correct_tour()
         {
-            TourLog testLog1 = new TourLog(1, "24-03-2025-1610", "langweilig", "leicht", 29, 24, 2);
-            TourLog testLog2 = new TourLog(1, "24-03-2025-1610", "langweilig", "leicht", 29, 29, 2);
-            TourLog testLog3 = new TourLog(2, "24-03-2025-1610", "langweilig", "leicht", 29, 29, 2);
+            TourLog testLog1 = new TourLog(1, "24-03-2025-1610", "langweilig", 2, 29, 24, 2);
+            TourLog testLog2 = new TourLog(1, "24-03-2025-1610", "langweilig", 2, 29, 29, 2);
+            TourLog testLog3 = new TourLog(2, "24-03-2025-1610", "langweilig", 2, 29, 29, 2);
             testLog2.Id = 1;
             tourLogManager.AddTourLog(testLog1);
             tourLogManager.AddTourLog(testLog2);

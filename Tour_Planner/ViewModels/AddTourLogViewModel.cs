@@ -37,8 +37,8 @@ namespace Tour_Planner.ViewModels
                 OnPropertyChanged();
             }
         }
-        private string? difficulty;
-        public string? Difficulty
+        private double? difficulty;
+        public double? Difficulty
         {
             get => difficulty;
             set
@@ -94,7 +94,7 @@ namespace Tour_Planner.ViewModels
 
                     if (datetime != null && comment != null && difficulty != null && totaldistance != null && totaltime != null && rating != null)
                     {
-                        TourLog tourlog = new TourLog(tourId, datetime, comment, difficulty, (double)totaldistance, (double)totaltime, (double)rating);
+                        TourLog tourlog = new TourLog(tourId, datetime, comment, (double)difficulty, (double)totaldistance, (double)totaltime, (double)rating);
                         tourLogViewModel.AddTourLog(tourlog);
                         Close?.Invoke();
                     }

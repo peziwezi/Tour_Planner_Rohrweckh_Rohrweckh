@@ -12,12 +12,12 @@ namespace Tour_Planner.Models
         public int TourId { get; set; }
         public string DateTime { get; set; }
         public string Comment { get; set; }
-        public string Difficulty { get; set; }
+        public double Difficulty { get; set; }
         public double TotalDistance { get; set; }
         public double TotalTime { get; set; }
         public double Rating { get; set; }
 
-        public TourLog(int tourId, string datetime, string comment, string difficulty, double totaldistance, double totaltime, double rating)
+        public TourLog(int tourId, string datetime, string comment, double difficulty, double totaldistance, double totaltime, double rating)
         {
             TourId = tourId;
             DateTime = datetime;

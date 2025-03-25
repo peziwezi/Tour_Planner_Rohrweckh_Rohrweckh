@@ -58,7 +58,7 @@ namespace Tour_Planner.Tests
         {
             TourLogManager tourLogManager = new TourLogManager(new TourLogRepository());
             TourLogViewModel tourLogViewModel = new TourLogViewModel(tourLogManager);
-            TourLog testLog = new TourLog(1, "Test", "Test", "Test1", 1, 1, 1);
+            TourLog testLog = new TourLog(1, "Test", "Test", 2, 1, 1, 1);
             tourLogViewModel.AddTourLog(testLog);
             int testInt = tourLogManager.FindMatchingTour(1).Count();
             Assert.That(testInt, Is.EqualTo(1));
@@ -68,7 +68,7 @@ namespace Tour_Planner.Tests
         {
             TourLogManager tourLogManager = new TourLogManager(new TourLogRepository());
             TourLogViewModel tourLogViewModel = new TourLogViewModel(tourLogManager);
-            TourLog testLog = new TourLog(1, "Test", "Test", "Test1", 1, 1, 1);
+            TourLog testLog = new TourLog(1, "Test", "Test", 2, 1, 1, 1);
             tourLogViewModel.AddTourLog(testLog);
             testLog.Id = 1;
             tourLogViewModel.RemoveTourLog(testLog);
@@ -80,9 +80,9 @@ namespace Tour_Planner.Tests
         {
             TourLogManager tourLogManager = new TourLogManager(new TourLogRepository());
             TourLogViewModel tourLogViewModel = new TourLogViewModel(tourLogManager);
-            TourLog testLog1 = new TourLog(1, "Test", "Test", "Test1", 1, 1, 1);
+            TourLog testLog1 = new TourLog(1, "Test", "Test", 2, 1, 1, 1);
             tourLogViewModel.AddTourLog(testLog1);
-            TourLog testLog2 = new TourLog(2, "Test", "Test", "Test1", 1, 1, 1);
+            TourLog testLog2 = new TourLog(2, "Test", "Test", 2, 1, 1, 1);
             testLog2.Id = 1;
             tourLogViewModel.ModifyTourLog(testLog2);
             int testInt = tourLogManager.FindMatchingTour(2).Count();
