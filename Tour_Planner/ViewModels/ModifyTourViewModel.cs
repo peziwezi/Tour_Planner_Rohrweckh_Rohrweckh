@@ -65,10 +65,21 @@ namespace Tour_Planner.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        void SetValues(Tour tour)
+        {
+            Name = tour.Name;
+            TourDescription = tour.TourDescription;
+            Origin = tour.Origin;
+            Destination = tour.Destination;
+            TransportType = tour.TransportType;
+        }
+
         public Action? Close { get; set; }
 
         public ModifyTourViewModel(TourViewModel tourViewModel, Tour priorTour)
         {
+            SetValues(priorTour);
             CloseCommand = new RelayCommand((_) =>
             {
                 Close?.Invoke();

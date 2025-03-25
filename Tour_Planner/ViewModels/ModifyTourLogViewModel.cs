@@ -75,10 +75,22 @@ namespace Tour_Planner.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        void SetValues(TourLog tourLog)
+        {
+            datetime = tourLog.DateTime;
+            comment = tourLog.Comment;
+            difficulty = tourLog.Difficulty;
+            totaldistance = tourLog.TotalDistance;
+            totaltime = tourLog.TotalTime;
+            rating = tourLog.Rating;
+        }
+
         public Action? Close { get; set; }
 
         public ModifyTourLogViewModel(TourLogViewModel tourlogViewModel,TourLog priorTourlog)
         {
+            SetValues(priorTourlog);
             CloseCommand = new RelayCommand((_) =>
             {
                 Close?.Invoke();
