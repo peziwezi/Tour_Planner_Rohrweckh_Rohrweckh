@@ -28,51 +28,62 @@ namespace Tour_Planner.Tests
         }
 
         [Test]
-        public void Testing_Add_Command()
+        public void Testing_Add_Tour()
         {
             Tour test = new Tour("Test", "Test", "Test1", "Test2", "Tester", 1, 1, "");
-            TourLog testLog = new TourLog(1, "Test", "Test", "Test1", 1, 1, 1);
             tourViewModel.AddTour(test);
-            tourLogViewModel.AddTourLog(testLog);
-            int testInt1 = tourManager.FindMatchingTours("Test").Count();
-            int testInt2 = tourLogManager.FindMatchingTour(1).Count();
-            Assert.That(testInt1, Is.EqualTo(1));
-            Assert.That(testInt2, Is.EqualTo(1));
+            int testInt = tourManager.FindMatchingTours("Test").Count();
+            Assert.That(testInt, Is.EqualTo(1));
         }
         [Test]
-        public void Testing_Delete_Command()
+        public void Testing_Delete_Tour()
         {
-            Tour test1 = new Tour("Test", "Test", "Test1", "Test2", "Tester", 1, 1, "");
-            TourLog testLog1 = new TourLog(1, "Test", "Test", "Test1", 1, 1, 1);
-        
-            tourViewModel.AddTour(test1);
-            tourLogViewModel.AddTourLog(testLog1);
-            test1.Id = 1;
-            testLog1.Id = 1;
-            tourViewModel.RemoveTour(test1);
-            tourLogViewModel.RemoveTourLog(testLog1);
-            int testInt1 = tourManager.FindMatchingTours("Test").Count();
-            int testInt2 = tourLogManager.FindMatchingTour(1).Count();
-            Assert.That(testInt1, Is.EqualTo(0));
-            Assert.That(testInt2, Is.EqualTo(0));
+            Tour test = new Tour("Test", "Test", "Test1", "Test2", "Tester", 1, 1, "");
+            tourViewModel.AddTour(test);
+            test.Id = 1;
+            tourViewModel.RemoveTour(test);
+            int testInt = tourManager.FindMatchingTours("Test").Count();
+            Assert.That(testInt, Is.EqualTo(0));
         }
         [Test]
-        public void Testing_Modify_Command()
+        public void Testing_Modify_Tour()
         {
             Tour test1 = new Tour("Test1", "Test1", "Test1", "Test2", "Tester", 1, 1, "");
-            TourLog testLog1 = new TourLog(1, "Test", "Test", "Test1", 1, 1, 1);
             tourViewModel.AddTour(test1);
-            tourLogViewModel.AddTourLog(testLog1);
             Tour test2 = new Tour("Test2", "Test2", "Test1", "Test2", "Tester", 1, 1, "");
-            TourLog testLog2 = new TourLog(2, "Test", "Test", "Test1", 1, 1, 1);
             test2.Id = 1;
-            testLog2.Id = 1;
             tourViewModel.ModifyTour(test2);
+            int testInt = tourManager.FindMatchingTours("Test2").Count();
+            Assert.That(testInt, Is.EqualTo(1));
+        }
+        [Test]
+        public void Testing_Add_TourLog()
+        {
+            TourLog testLog = new TourLog(1, "Test", "Test", "Test1", 1, 1, 1);
+            tourLogViewModel.AddTourLog(testLog);
+            int testInt = tourLogManager.FindMatchingTour(1).Count();
+            Assert.That(testInt, Is.EqualTo(1));
+        }
+        [Test]
+        public void Testing_Delete_TourLog()
+        {
+            TourLog testLog = new TourLog(1, "Test", "Test", "Test1", 1, 1, 1);
+            tourLogViewModel.AddTourLog(testLog);
+            testLog.Id = 1;
+            tourLogViewModel.RemoveTourLog(testLog);
+            int testInt = tourLogManager.FindMatchingTour(1).Count();
+            Assert.That(testInt, Is.EqualTo(0));
+        }
+        [Test]
+        public void Testing_Modify_TourLog()
+        {
+            TourLog testLog1 = new TourLog(1, "Test", "Test", "Test1", 1, 1, 1);
+            tourLogViewModel.AddTourLog(testLog1);
+            TourLog testLog2 = new TourLog(2, "Test", "Test", "Test1", 1, 1, 1);
+            testLog2.Id = 1;
             tourLogViewModel.ModifyTourLog(testLog2);
-            int testInt1 = tourManager.FindMatchingTours("Test2").Count();
-            int testInt2 = tourLogManager.FindMatchingTour(2).Count();
-            Assert.That(testInt1, Is.EqualTo(1));
-            Assert.That(testInt2, Is.EqualTo(1));
+            int testInt = tourLogManager.FindMatchingTour(2).Count();
+            Assert.That(testInt, Is.EqualTo(1));
         }
         [Test]
         public void Test_End_Command()
