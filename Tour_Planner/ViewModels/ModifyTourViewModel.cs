@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -66,7 +67,7 @@ namespace Tour_Planner.ViewModels
         }
         public Action? Close { get; set; }
 
-        public ModifyTourViewModel(TourViewModel tourViewModel)
+        public ModifyTourViewModel(TourViewModel tourViewModel, Tour priorTour)
         {
             CloseCommand = new RelayCommand((_) =>
             {
@@ -77,10 +78,11 @@ namespace Tour_Planner.ViewModels
                 if (name != null && tourdescription != null && origin != null && destination != null && transporttype != null)
                 {
                     Tour tour = new Tour(name, tourdescription, origin, destination, transporttype, 10, 10, "Image.png");
+                    tour.Id = priorTour.Id;
                     tourViewModel.ModifyTour(tour);
                     Close?.Invoke();
                 }
-            });
+            }, (_) => (name != null && tourdescription != null && origin != null && destination != null && transporttype != null));
 
         }
     }

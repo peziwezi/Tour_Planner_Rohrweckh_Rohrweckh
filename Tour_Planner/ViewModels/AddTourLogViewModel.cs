@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Tour_Planner.BLL;
 using Tour_Planner.Commands;
@@ -79,6 +81,7 @@ namespace Tour_Planner.ViewModels
 
         public AddTourLogViewModel(TourLogViewModel tourLogViewModel)
         {
+
             CloseCommand = new RelayCommand((_) =>
             {
                 Close?.Invoke();
@@ -96,7 +99,7 @@ namespace Tour_Planner.ViewModels
                         Close?.Invoke();
                     }
                 }
-            });
+            }, (_) => (datetime != null && comment != null && difficulty != null && totaldistance != null && totaltime != null && rating != null));
 
         }
     }

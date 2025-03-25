@@ -52,7 +52,7 @@ namespace Tour_Planner.ViewModels
         {
             if (tour != null)
             {
-                Tour oldTour = (Tour)Data.Where(x => x.Id == tour.Id);
+                Tour oldTour = Data.Single(x => x.Id == tour.Id);
                 int index = Data.IndexOf(oldTour);
                 Data[index] = tour;
             }
@@ -86,7 +86,7 @@ namespace Tour_Planner.ViewModels
                     return;
                 }
                 var dlg = new ModifyTourDialog();
-                dlg.DataContext = new ModifyTourViewModel(this);
+                dlg.DataContext = new ModifyTourViewModel(this,SelectedTour);
                 dlg.ShowDialog();
             }, (_) => SelectedTour != null);
             DeleteTourCommand = new RelayCommand((_) =>

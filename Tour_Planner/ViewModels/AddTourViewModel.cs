@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Xml.Linq;
 using Tour_Planner.BLL;
 using Tour_Planner.Commands;
 using Tour_Planner.Interfaces;
@@ -81,7 +83,7 @@ namespace Tour_Planner.ViewModels
                     tourViewModel.AddTour(tour);
                     Close?.Invoke();
                 }
-            });
+            }, (_) => (name != null && tourdescription != null && origin != null && destination != null && transporttype != null));
 
         }
     }

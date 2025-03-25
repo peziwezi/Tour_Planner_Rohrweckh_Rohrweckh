@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -76,7 +77,7 @@ namespace Tour_Planner.ViewModels
         }
         public Action? Close { get; set; }
 
-        public ModifyTourLogViewModel(TourLogViewModel tourlogViewModel)
+        public ModifyTourLogViewModel(TourLogViewModel tourlogViewModel,TourLog priorTourlog)
         {
             CloseCommand = new RelayCommand((_) =>
             {
@@ -86,11 +87,12 @@ namespace Tour_Planner.ViewModels
             {
                 if (datetime != null && comment != null && difficulty != null && totaldistance != null && totaltime != null && rating != null)
                 {
-                    TourLog tourlog = new TourLog(1, datetime, comment, difficulty, (double)totaldistance, (double)totaltime, (double)rating);
+                    TourLog tourlog = new TourLog(priorTourlog.TourId, datetime, comment, difficulty, (double)totaldistance, (double)totaltime, (double)rating);
+                    tourlog.Id = priorTourlog.Id;
                     tourlogViewModel.ModifyTourLog(tourlog);
                     Close?.Invoke();
                 }
-            });
+            }, (_) => (datetime != null && comment != null && difficulty != null && totaldistance != null && totaltime != null && rating != null));
 
         }
     }

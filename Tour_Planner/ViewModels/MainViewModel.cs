@@ -90,8 +90,8 @@ namespace Tour_Planner.ViewModels
                 {
                     return;
                 }
-                var dlg = new AddTourDialog();
-                dlg.DataContext = new AddTourViewModel(tourViewModel);
+                var dlg = new ModifyTourDialog();
+                dlg.DataContext = new ModifyTourViewModel(tourViewModel, SelectedTour);
                 dlg.ShowDialog();
             }, (_) => SelectedTour != null);
             ModifyTourLogCommand = new RelayCommand((_) =>
@@ -101,7 +101,7 @@ namespace Tour_Planner.ViewModels
                     return;
                 }
                 var dlg = new ModifyTourLogDialog();
-                dlg.DataContext = new ModifyTourLogViewModel(tourLogViewModel);
+                dlg.DataContext = new ModifyTourLogViewModel(tourLogViewModel, SelectedTourLog);
                 dlg.ShowDialog();
             }, (_) => SelectedTourLog != null);
             DeleteTourCommand = new RelayCommand((_) =>
@@ -130,6 +130,7 @@ namespace Tour_Planner.ViewModels
                 {
                     SelectedTour = tour;
                     detailsViewModel.GetDetails(tour);
+                    
                     tourLogViewModel.GetSelectedTour(tour);
                 }
                 else

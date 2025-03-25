@@ -47,7 +47,7 @@ namespace Tour_Planner.ViewModels
         {
             if(tourLog != null)
             {
-                TourLog oldTourLog = (TourLog)Data.Where(x => x.Id == tourLog.Id);
+                TourLog oldTourLog = Data.Single(x => x.Id == tourLog.Id);
                 int index = Data.IndexOf(oldTourLog);
                 Data[index] = tourLog;
             }
@@ -97,7 +97,7 @@ namespace Tour_Planner.ViewModels
                     return;
                 }
                 var dlg = new ModifyTourLogDialog();
-                dlg.DataContext = new ModifyTourLogViewModel(this);
+                dlg.DataContext = new ModifyTourLogViewModel(this,SelectedTourLog);
                 dlg.ShowDialog();
             }, (_) => SelectedTourLog != null);
             DeleteTourLogCommand = new RelayCommand((_) =>
