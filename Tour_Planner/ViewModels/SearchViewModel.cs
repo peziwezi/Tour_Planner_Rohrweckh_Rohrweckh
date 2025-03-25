@@ -28,7 +28,7 @@ namespace Tour_Planner.ViewModels
             }
         }
 
-        public SearchViewModel(ITourManager tourManager)
+        public SearchViewModel()
         {
             SearchCommand = new RelayCommand((_) =>
             {

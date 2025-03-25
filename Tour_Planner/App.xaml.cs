@@ -19,7 +19,7 @@ public partial class App : Application
         var tourManager = new TourManager(tourRepository);
         var tourLogRepository = new TourLogRepository();
         var tourLogManager = new TourLogManager(tourLogRepository);
-        var searchViewModel = new SearchViewModel(tourManager);
+        var searchViewModel = new SearchViewModel();
         var tourViewModel = new TourViewModel(tourManager);
         var detailsViewModel = new DetailsViewModel();
         var tourLogViewModel = new TourLogViewModel(tourLogManager);

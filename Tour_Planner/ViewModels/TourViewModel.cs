@@ -28,7 +28,7 @@ namespace Tour_Planner.ViewModels
             {
                 selectedTour = value;
                 OnPropertyChanged();
-                OnSelectedItemChanged();
+                OnSelectedTourChanged();
             }
         }
         public void SetTours(IEnumerable<Tour> tours)
@@ -62,7 +62,7 @@ namespace Tour_Planner.ViewModels
             tourManager.DeleteTour(tour);
         }
 
-        private void OnSelectedItemChanged()
+        private void OnSelectedTourChanged()
         {
             SelectedTourChanged?.Invoke(this, SelectedTour);
         }

@@ -15,5 +15,9 @@ namespace Tour_Planner.ViewModels
             Data.Clear();
             Data.Add(tour);
         }
+        public void ClearDetails()
+        {
+            Data.Clear();
+        }
     }
 }

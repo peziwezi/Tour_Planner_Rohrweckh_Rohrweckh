@@ -41,6 +41,7 @@
             ItemsSource="{Binding Data}" 
             AutoGenerateColumns="False" 
             AlternatingRowBackground="LightGray"
+            SelectedValue="{Binding SelectedTourLog}"
             CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding DateTime}" Header="Date/Time" Width="*"/>

@@ -27,7 +27,7 @@ namespace Tour_Planner.ViewModels
         public ICommand DeleteTourLogCommand { get; }
 
         public Action? Close { get; set; }
-
+       
         private Tour? selectedTour;
         public Tour? SelectedTour
         {
@@ -35,6 +35,17 @@ namespace Tour_Planner.ViewModels
             set
             {
                 selectedTour = value;
+                OnPropertyChanged();
+            }
+        }
+ 
+        private TourLog? selectedTourLog;
+        public TourLog? SelectedTourLog
+        {
+            get => selectedTourLog;
+            set
+            {
+                selectedTourLog = value;
                 OnPropertyChanged();
             }
         }
@@ -80,8 +91,12 @@ namespace Tour_Planner.ViewModels
             }, (_) => SelectedTour != null);
             DeleteTourLogCommand = new RelayCommand((_) =>
             {
-                
-            });
+                if (SelectedTourLog == null)
+                {
+                    return;
+                }
+                tourLogViewModel.RemoveTourLog(SelectedTourLog);
+            }, (_) => SelectedTourLog != null);
             searchViewModel.SearchTextChanged += (_, searchText) =>
             {
                 SearchTours(searchText);
@@ -93,8 +108,18 @@ namespace Tour_Planner.ViewModels
                     SelectedTour = tour;
                     detailsViewModel.GetDetails(tour);
                 }
+                else
+                {
+                    detailsViewModel.ClearDetails();
+                }
             };
-
+            tourLogViewModel.SelectedTourLogChanged += (_, tourLog) =>
+            {
+                if (tourLog != null)
+                {
+                    SelectedTourLog = tourLog;
+                }
+            };
         }
         private void SearchTours(string? searchText)
         {
