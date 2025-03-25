@@ -20,6 +20,7 @@ namespace Tour_Planner.ViewModels
         public ObservableCollection<Tour> Data { get; } = [];
 
         public ICommand AddTourCommand { get; }
+        public ICommand ModifyTourCommand { get; }
         public ICommand DeleteTourCommand { get; }
         private Tour? selectedTour;
         public Tour? SelectedTour
@@ -78,6 +79,16 @@ namespace Tour_Planner.ViewModels
                 dlg.DataContext = new AddTourViewModel(this);
                 dlg.ShowDialog();
             });
+            ModifyTourCommand = new RelayCommand((_) =>
+            {
+                if (SelectedTour == null)
+                {
+                    return;
+                }
+                var dlg = new ModifyTourDialog();
+                dlg.DataContext = new ModifyTourViewModel(this);
+                dlg.ShowDialog();
+            }, (_) => SelectedTour != null);
             DeleteTourCommand = new RelayCommand((_) =>
             {
                 if (SelectedTour == null)

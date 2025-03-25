@@ -24,6 +24,8 @@ namespace Tour_Planner.ViewModels
         public ICommand? AddTourLogCommand { get; }
         public ICommand DeleteTourCommand { get; }
         public ICommand DeleteTourLogCommand { get; }
+        public ICommand ModifyTourCommand { get; }
+        public ICommand ModifyTourLogCommand { get; }
 
         public Action? Close { get; set; }
        
@@ -82,6 +84,26 @@ namespace Tour_Planner.ViewModels
                     dlg.ShowDialog();
                 }
             }, (_) => SelectedTour != null);
+            ModifyTourCommand = new RelayCommand((_) =>
+            {
+                if (SelectedTour == null)
+                {
+                    return;
+                }
+                var dlg = new AddTourDialog();
+                dlg.DataContext = new AddTourViewModel(tourViewModel);
+                dlg.ShowDialog();
+            }, (_) => SelectedTour != null);
+            ModifyTourLogCommand = new RelayCommand((_) =>
+            {
+                if (SelectedTourLog == null)
+                {
+                    return;
+                }
+                var dlg = new ModifyTourLogDialog();
+                dlg.DataContext = new ModifyTourLogViewModel(tourLogViewModel);
+                dlg.ShowDialog();
+            }, (_) => SelectedTourLog != null);
             DeleteTourCommand = new RelayCommand((_) =>
             {
                 if (SelectedTour == null)

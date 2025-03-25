@@ -5,8 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tour_Planner.Views"
         mc:Ignorable="d"
-        Title="ModifyTourDialog" Height="450" Width="800">
+            Title="Modify Tour" Height="330" Width="400" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <GroupBox Margin="10" 
+      Header="Tour">
+                <StackPanel>
+                    <Label>Name</Label>
+                    <TextBox Text="{Binding Name}" />
+                    <Label>Tour description</Label>
+                    <TextBox Text="{Binding TourDescription}" />
+                    <Label>Origin</Label>
+                    <TextBox Text="{Binding Origin}" />
+                    <Label>Destination</Label>
+                    <TextBox Text="{Binding Destination}" />
+                    <Label>Transport type</Label>
+                    <TextBox Text="{Binding TransportType}" />
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+        <Button Grid.Row="1" Grid.Column="0" Margin="5,5,5,5" Command="{Binding SaveCommand}">Save</Button>
+        <Button Grid.Row="1" Grid.Column="1" Margin="5,5,5,5" Command="{Binding CloseCommand}">Cancel</Button>
     </Grid>
 </Window>

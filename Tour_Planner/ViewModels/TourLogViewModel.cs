@@ -19,7 +19,8 @@ namespace Tour_Planner.ViewModels
         public ObservableCollection<TourLog> Data { get; } = [];
         private readonly ITourLogManager tourLogManager;
         public Tour? SelectedTour;
-        public ICommand? AddTourLogCommand { get; }
+        public ICommand AddTourLogCommand { get; }
+        public ICommand ModifyTourLogCommand { get; }
         public ICommand DeleteTourLogCommand { get; }
         private TourLog? selectedTourLog;
         public TourLog? SelectedTourLog
@@ -89,6 +90,16 @@ namespace Tour_Planner.ViewModels
                     dlg.ShowDialog();
                 }
             }, (_) => SelectedTour != null);
+            ModifyTourLogCommand = new RelayCommand((_) =>
+            {
+                if (SelectedTourLog == null)
+                {
+                    return;
+                }
+                var dlg = new ModifyTourLogDialog();
+                dlg.DataContext = new ModifyTourLogViewModel(this);
+                dlg.ShowDialog();
+            }, (_) => SelectedTourLog != null);
             DeleteTourLogCommand = new RelayCommand((_) =>
             {
                 if (SelectedTourLog == null)

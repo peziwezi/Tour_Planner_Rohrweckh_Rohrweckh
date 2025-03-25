@@ -7,6 +7,20 @@ namespace Tour_Planner.ViewModels
     class DetailsViewModel : BaseViewModel
     {
         public ObservableCollection<Tour> Data { get; set; } = [];
+        public string DisplayedImagePath
+        {
+            get 
+            { 
+                if(Data.Count != 0)
+                {
+                    return "pack://application:,,,/Tour_Planer;component/Images/" + Data[0].RouteInformation;
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
         public DetailsViewModel()
         {
         }

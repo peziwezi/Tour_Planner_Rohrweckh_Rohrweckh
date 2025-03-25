@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tour_Planner.Views"
         mc:Ignorable="d"
-            Title="Add TourLog" Height="360" Width="400" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" ResizeMode="NoResize" Loaded="Window_Loaded">
+        Title="Add TourLog" Height="360" Width="400" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -17,7 +17,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <GroupBox Margin="10" 
-      Header="Tour">
+                Header="Tour">
                 <StackPanel>
                     <Label>Date/Time</Label>
                     <TextBox Text="{Binding DateTime}" />
