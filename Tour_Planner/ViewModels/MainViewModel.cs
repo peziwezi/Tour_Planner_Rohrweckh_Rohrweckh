@@ -16,13 +16,12 @@ namespace Tour_Planner.ViewModels
     class MainViewModel : BaseViewModel, ICloseWindow
     {
         private readonly ITourManager tourManager;
-        private readonly ITourLogManager tourLogManager;
         private readonly TourViewModel tourViewModel;
 
         public ICommand ExitCommand { get; }
         public ICommand AboutCommand { get; }
         public ICommand AddTourCommand { get; }
-        public ICommand AddTourLogCommand { get; }
+        public ICommand? AddTourLogCommand { get; }
         public ICommand DeleteTourCommand { get; }
         public ICommand DeleteTourLogCommand { get; }
 
@@ -53,7 +52,6 @@ namespace Tour_Planner.ViewModels
         public MainViewModel(ITourManager tourManager, ITourLogManager tourLogManager, SearchViewModel searchViewModel, TourViewModel tourViewModel, DetailsViewModel detailsViewModel, TourLogViewModel tourLogViewModel)
         {
             this.tourManager = tourManager;
-            this.tourLogManager = tourLogManager;
             this.tourViewModel = tourViewModel;
             SearchTours(null);
 
@@ -77,10 +75,13 @@ namespace Tour_Planner.ViewModels
             });
             AddTourLogCommand = new RelayCommand((_) =>
             {
-                var dlg = new AddTourLogDialog();
-                dlg.DataContext = new AddTourLogViewModel(tourLogViewModel);
-                dlg.ShowDialog();
-            });
+                if (tourLogViewModel.SelectedTour != null)
+                {
+                    var dlg = new AddTourLogDialog();
+                    dlg.DataContext = new AddTourLogViewModel(tourLogViewModel);
+                    dlg.ShowDialog();
+                }
+            }, (_) => SelectedTour != null);
             DeleteTourCommand = new RelayCommand((_) =>
             {
                 if (SelectedTour == null)
@@ -107,10 +108,13 @@ namespace Tour_Planner.ViewModels
                 {
                     SelectedTour = tour;
                     detailsViewModel.GetDetails(tour);
+                    tourLogViewModel.GetSelectedTour(tour);
                 }
                 else
                 {
                     detailsViewModel.ClearDetails();
+                    tourLogViewModel.ClearTourlogs();
+                    tourLogViewModel.SelectedTour = null;
                 }
             };
             tourLogViewModel.SelectedTourLogChanged += (_, tourLog) =>

@@ -5,10 +5,12 @@ namespace Tour_Planner.DAL
     public class TourLogRepository:ITourLogRepository
     {
         private readonly List<TourLog> _tourLogList = [];
+        private int size;
 
         public TourLog Add(TourLog tourLog)
         {
-            tourLog.Id = _tourLogList.Count+1;
+            size++;
+            tourLog.Id = size;
             _tourLogList.Add(tourLog);
             return tourLog;
         }
@@ -20,6 +22,15 @@ namespace Tour_Planner.DAL
             {
                 _tourLogList.Remove(foundTourLog);
                 _tourLogList.Add(tourLog);
+            }
+        }
+
+        public void RemoveListByTourID(int tourId)
+        {
+            List<TourLog> RemovalList = GetTourLogsByTourId(tourId).ToList();
+            for(int i = 0; i < RemovalList.Count; i++)
+            {
+                _tourLogList.Remove(RemovalList[i]);
             }
         }
 

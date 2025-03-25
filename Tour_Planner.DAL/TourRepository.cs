@@ -5,10 +5,12 @@ namespace Tour_Planner.DAL
     public class TourRepository : ITourRepository
     {
         private readonly List<Tour> _tourList = [];
+        private int size;
 
         public Tour Add(Tour tour)
         {
-            tour.Id = _tourList.Count + 1;
+            size++;
+            tour.Id = size;
             _tourList.Add(tour);
             return tour;
         }

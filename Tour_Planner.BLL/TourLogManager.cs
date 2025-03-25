@@ -24,6 +24,11 @@ namespace Tour_Planner.BLL
             }
         }
 
+        public void DeleteConnectedTourlogs(int tourId)
+        {
+            _repository.RemoveListByTourID(tourId);
+        }
+
         public TourLog? AddTourLog(TourLog tourLog)
         {
             if (tourLog != null)

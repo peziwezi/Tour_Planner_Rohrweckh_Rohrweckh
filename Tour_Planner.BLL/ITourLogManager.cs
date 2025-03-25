@@ -7,6 +7,7 @@ namespace Tour_Planner.BLL
         TourLog? AddTourLog(TourLog tourLog);
         void UpdateTourLog(TourLog tourLog);
         void DeleteTourLog(TourLog tourLog);
+        void DeleteConnectedTourlogs(int tourId);
 
         IEnumerable<TourLog> FindMatchingTour(int tourId);
     }

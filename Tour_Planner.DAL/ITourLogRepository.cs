@@ -8,6 +8,7 @@ namespace Tour_Planner.DAL
         void Update(TourLog tourLog);
         void Remove(TourLog tourLog);
 
+        void RemoveListByTourID(int tourId);
         IEnumerable<TourLog> GetTourLogsByTourId(int tourId);
         TourLog? GetSingleTourLogById(int id);
     }

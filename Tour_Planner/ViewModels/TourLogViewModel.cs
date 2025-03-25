@@ -18,7 +18,8 @@ namespace Tour_Planner.ViewModels
         public event EventHandler<TourLog?>? SelectedTourLogChanged;
         public ObservableCollection<TourLog> Data { get; } = [];
         private readonly ITourLogManager tourLogManager;
-        public ICommand AddTourLogCommand { get; }
+        public Tour? SelectedTour;
+        public ICommand? AddTourLogCommand { get; }
         public ICommand DeleteTourLogCommand { get; }
         private TourLog? selectedTourLog;
         public TourLog? SelectedTourLog
@@ -51,10 +52,25 @@ namespace Tour_Planner.ViewModels
             }
         }
 
+        public void ClearTourlogs()
+        {
+            Data.Clear();
+        }
+
         public void RemoveTourLog(TourLog tourLog)
         {
             Data.Remove(tourLog);
             tourLogManager.DeleteTourLog(tourLog);
+        }
+
+        public void GetSelectedTour(Tour tour)
+        {
+            if (tour != null)
+            {
+                Data.Clear();
+                tourLogManager.FindMatchingTour(tour.Id).ToList().ForEach(j => Data.Add(j)); ;
+                SelectedTour = tour;
+            }
         }
 
         private void OnSelectedTourlogChanged()
@@ -66,10 +82,13 @@ namespace Tour_Planner.ViewModels
             this.tourLogManager = tourLogManager;
             AddTourLogCommand = new RelayCommand((_) =>
             {
-                var dlg = new AddTourLogDialog();
-                dlg.DataContext = new AddTourLogViewModel(this);
-                dlg.ShowDialog();
-            });
+                if (SelectedTour != null)
+                {
+                    var dlg = new AddTourLogDialog();
+                    dlg.DataContext = new AddTourLogViewModel(this);
+                    dlg.ShowDialog();
+                }
+            }, (_) => SelectedTour != null);
             DeleteTourLogCommand = new RelayCommand((_) =>
             {
                 if (SelectedTourLog == null)

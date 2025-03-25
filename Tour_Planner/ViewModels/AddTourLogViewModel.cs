@@ -77,7 +77,7 @@ namespace Tour_Planner.ViewModels
         }
         public Action? Close { get; set; }
 
-        public AddTourLogViewModel(TourLogViewModel tourlogViewModel)
+        public AddTourLogViewModel(TourLogViewModel tourLogViewModel)
         {
             CloseCommand = new RelayCommand((_) =>
             {
@@ -85,11 +85,16 @@ namespace Tour_Planner.ViewModels
             });
             SaveCommand = new RelayCommand((_) =>
             {
-                if (datetime != null && comment != null && difficulty != null && totaldistance != null && totaltime != null && rating != null)
+                if (tourLogViewModel != null && tourLogViewModel.SelectedTour != null)
                 {
-                    TourLog tourlog = new TourLog(1,datetime,comment,difficulty, (double)totaldistance, (double)totaltime, (double)rating);
-                    tourlogViewModel.AddTourLog(tourlog);
-                    Close?.Invoke();
+                    int tourId = tourLogViewModel.SelectedTour.Id;
+
+                    if (datetime != null && comment != null && difficulty != null && totaldistance != null && totaltime != null && rating != null)
+                    {
+                        TourLog tourlog = new TourLog(tourId, datetime, comment, difficulty, (double)totaldistance, (double)totaltime, (double)rating);
+                        tourLogViewModel.AddTourLog(tourlog);
+                        Close?.Invoke();
+                    }
                 }
             });
 
